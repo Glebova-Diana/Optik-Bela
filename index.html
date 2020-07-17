@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,562;0,600;0,700;1,400;1,500;1,562;1,600;1,700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+
+    <script src="https://kit.fontawesome.com/7497b7e05a.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+<header class="header">
+    <div class="header-top-wrap">
+        <div class="header-top-mob">
+            <button id="burger" class="header-top-mob__burger-btn" onclick="openMenu()">
+                <svg class="header-top-mob__burger" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1"
+                     x="0px" y="0px" viewBox="0 0 394.971 394.971" style="enable-background:new 0 0 394.971 394.971;"
+                     xml:space="preserve" width="512px" height="512px">
+			<path d="M56.424,146.286c-28.277,0-51.2,22.923-51.2,51.2s22.923,51.2,51.2,51.2s51.2-22.923,51.2-51.2     S84.701,146.286,56.424,146.286z M56.424,227.788L56.424,227.788c-16.735,0-30.302-13.567-30.302-30.302     s13.567-30.302,30.302-30.302c16.735,0,30.302,13.567,30.302,30.302S73.16,227.788,56.424,227.788z"
+                  data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+                    <path d="M379.298,187.037H143.151c-5.771,0-10.449,4.678-10.449,10.449s4.678,10.449,10.449,10.449h236.147     c5.771,0,10.449-4.678,10.449-10.449S385.069,187.037,379.298,187.037z"
+                          data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+                    <path d="M56.424,0c-28.277,0-51.2,22.923-51.2,51.2s22.923,51.2,51.2,51.2s51.2-22.923,51.2-51.2S84.701,0,56.424,0z      M56.424,81.502c-16.735,0-30.302-13.567-30.302-30.302s13.567-30.302,30.302-30.302S86.726,34.465,86.726,51.2     S73.16,81.502,56.424,81.502z"
+                          data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+                    <path d="M143.151,61.649h236.147c5.771,0,10.449-4.678,10.449-10.449s-4.678-10.449-10.449-10.449H143.151     c-5.771,0-10.449,4.678-10.449,10.449S137.38,61.649,143.151,61.649z"
+                          data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+                    <path d="M56.424,292.571c-28.277,0-51.2,22.923-51.2,51.2c0,28.277,22.923,51.2,51.2,51.2s51.2-22.923,51.2-51.2     C107.624,315.494,84.701,292.571,56.424,292.571z M86.726,343.771c0,16.735-13.567,30.302-30.302,30.302v0     c-16.735,0-30.302-13.567-30.302-30.302c0-16.735,13.567-30.302,30.302-30.302S86.726,327.036,86.726,343.771L86.726,343.771z"
+                          data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+                    <path d="M379.298,333.322H143.151c-5.771,0-10.449,4.678-10.449,10.449s4.678,10.449,10.449,10.449h236.147     c5.771,0,10.449-4.678,10.449-10.449S385.069,333.322,379.298,333.322z"
+                          data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+	        </svg>
+            </button>
+            <div class="header-top-mob__font-resize">
+                <div class="header-top__btn-wrap">
+                    <button class="header-top__btn" type="button">
+                        A
+                    </button>
+                    <button class="header-top__btn header-top__btn--medium" type="button">
+                        A
+                    </button>
+                    <button class="header-top__btn header-top__btn--big" type="button">
+                        A
+                    </button>
+                </div>
+            </div>
+
+            <div id="modalMenu" style="display: none" class="header__modal-menu"></div>
+        </div>
+        <div class="header-top">
+            <nav id="headerMenu" class="header-nav">
+                <ul class="header-nav__menu-list">
+                    <li class="header-nav__link">
+                        <a href="javascript:;" onclick="closeMenu()">Startseite</a>
+                    </li>
+                    <li class="header-nav__link header-nav__link--haschild">
+                        <a href="javascript:;" onclick="closeMenu()">Brillengläser
+                            <span class="header-nav__arrow"></span>
+                        </a>
+                        <ul class="header-nav__sub-menu-list">
+                            <li class="header-nav__link">
+                                <a href="javascript:;">Einstärkengläser</a>
+                            </li>
+                            <li class="header-nav__link">
+                                <a href="javascript:;">Bildschirmbrillen</a>
+                            </li>
+                            <li class="header-nav__link">
+                                <a href="javascript:;">Gleitsichtbrillen</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header-nav__link header-nav__link--haschild">
+                        <a href="javascript:;" onclick="closeMenu()">Brillenfassungen
+                            <span class="header-nav__arrow"></span>
+                        </a>
+                        <ul class="header-nav__sub-menu-list">
+                            <li class="header-nav__link">
+                                <a href="javascript:;">Einstärkengläser</a>
+                            </li>
+                            <li class="header-nav__link">
+                                <a href="javascript:;">Bildschirmbrillen</a>
+                            </li>
+                            <li class="header-nav__link">
+                                <a href="javascript:;">Gleitsichtbrillen</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header-nav__link header-nav__link--haschild">
+                        <a href="javascript:;" onclick="closeMenu()">Kontaktlinsen
+                            <span class="header-nav__arrow"></span>
+                        </a>
+                        <ul class="header-nav__sub-menu-list">
+                            <li class="header-nav__link">
+                                <a href="javascript:;" onclick="closeMenu()">Einstärkengläser</a>
+                            </li>
+                            <li class="header-nav__link">
+                                <a href="javascript:;" onclick="closeMenu()">Bildschirmbrillen</a>
+                            </li>
+                            <li class="header-nav__link">
+                                <a href="javascript:;" onclick="closeMenu()">Gleitsichtbrillen</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header-nav__link">
+                        <a href="javascript:;" onclick="closeMenu()">Aktionen</a>
+                    </li>
+                    <li class="header-nav__link">
+                        <a href="javascript:;" onclick="closeMenu()">Kontakt</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-top__border"></div>
+            <div class="header-top__btn-wrap">
+                <button class="header-top__btn" type="button">
+                    A
+                </button>
+                <button class="header-top__btn header-top__btn--medium" type="button">
+                    A
+                </button>
+                <button class="header-top__btn header-top__btn--big" type="button">
+                    A
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="contactBar" class="contact-bar">
+        <a href="/">
+            <picture>
+                <source media="(min-width: 1920px)" srcset="assets/images/logo.png">
+                <source media="(min-width: 1600px)" srcset="assets/images/logo-1600.png">
+                <source media="(min-width: 1440px)" srcset="assets/images/logo-1440.png">
+                <source media="(min-width: 1366px)" srcset="assets/images/logo-1366.png">
+                <source media="(min-width: 1024px)" srcset="assets/images/logo-1024.png">
+                <source media="(min-width: 768px)" srcset="assets/images/logo-768.png">
+                <img class="contact-bar__logo" src="assets/images/logo-768.png" alt="">
+            </picture>
+        </a>
+        <div class="contact-bar__info contact-bar__address">
+            <b>Optik Béla Ellinger GmbH</b>
+            <span>Praterstraße 30</span>
+            <span>1020 Wien</span>
+        </div>
+        <div class="contact-bar__info contact-bar__phone">
+            <b>Kontaktaufnahme</b>
+            <span>elefon: 01/214 12 80</span>
+            <span>E-Mail:
+                <span class="contact-bar__info--green">
+                    office@optiker-ellinger.at
+                </span>
+            </span>
+        </div>
+        <div class="contact-bar__info contact-bar__schedule">
+            <b>Öffnungszeiten</b>
+            <div class="contact-bar__schedule-box">
+                <span>Montag - Freitag:</span>
+                <span>09:00 - 18:00 Uhr</span>
+            </div>
+            <div class="contact-bar__schedule-box">
+                <span>Samstag:</span>
+                <span>09:00 - 12:00 Uhr</span>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="banner">
+    <div class="banner__left-box">
+        <h1 class="banner__heading">100% Qualität seit 1965</h1>
+        <span class="banner__title">– Ihr Optik-Fachgeschäft in Wien.</span>
+        <p class="banner__text">Erstklassige Qualität bei Brillenfassungen und Brillengläsern
+            in Kombination aus Tradition und moderner Technik.</p>
+        <div class="banner__phone-box">
+            <span class="banner__phone-txt">
+                Jetzt
+                <b>kostenlosen Beratungstermin</b>
+                vereinbaren:
+               <span>
+                   <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                    01/214 12 80
+               </span>
+            </span>
+        </div>
+    </div>
+
+    <div class="swiper-container banner__img-box">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="assets/images/banner-glasses-1.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="assets/images/banner-glasses-2.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="assets/images/banner-glasses-3.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="advantages">
+    <a href="javascript:;" class="advantages__card">
+        <div class="advantages__img"></div>
+        <div class="advantages__border"></div>
+        <span class="advantages__title">Brillengläser</span>
+        <p class="advantages__text">
+            Ob Sie kurzsichtig oder weitsichtig, in unserem Optikerfachgeschäft erhalten Sie hochwertige Brillengläser
+            für alle Ansprüche.
+        </p>
+    </a>
+    <a href="javascript:;" class="advantages__card">
+        <div class="advantages__img advantages__img--second"></div>
+        <div class="advantages__border"></div>
+        <span class="advantages__title">Brillenfassungen</span>
+        <p class="advantages__text">
+            Wir helfen Ihnen bei der Wahl die optimale Brillenfassung für Ihre Persönlichkeit und Ihren Typ zu finden.
+        </p>
+    </a>
+    <a href="javascript:;" class="advantages__card">
+        <div class="advantages__img advantages__img--third"></div>
+        <div class="advantages__border"></div>
+        <span class="advantages__title">Kontaktlinsen</span>
+        <p class="advantages__text">
+            Bei Optik Béla Ellinger mitten in Wien erwartet Sie ein großes Sortiment an Kontaktlinsen für jeden optimal
+            angepasst.
+        </p>
+    </a>
+</section>
+<section class="form-wrap">
+    <h2 class="form__title">
+        Wir haben Ihr Interesse geweckt?
+    </h2>
+    <p class="form__text">
+        Jetzt einen Termin kostenlosen Sehtest vereinbaren!
+    </p>
+    <div class="form__eye-box">
+        <div class="form__border"></div>
+        <span class="form__eye">
+            <i class="far fa-eye"></i>
+            </span>
+        <div class="form__border"></div>
+    </div>
+    <form action="" class="form">
+        <div class="form__group form__group--name">
+            <label for="name">
+                <i class="fas fa-user"></i>
+            </label>
+            <input id="name" type="text" placeholder="Ihr Vor- und Nachname">
+        </div>
+        <div class="form__group form__group--email">
+            <label for="email">@</label>
+            <input id="email" type="text" placeholder="Ihre E-Mail Adresse">
+        </div>
+        <div class="form__group form__group--phone">
+            <label for="phone">
+                <i class="fas fa-phone-alt"></i>
+            </label>
+            <input id="phone" type="text" placeholder="Ihre Telefonnummer">
+        </div>
+        <div class="form__group form__group--data">
+            <label for="datapicker">
+                <i class="fas fa-calendar-alt"></i>
+            </label>
+            <input id="datapicker" class="flatpickr flatpickr-input active" type="text"
+                   placeholder="Datum auswählen" readonly="readonly">
+        </div>
+        <div class="form__group form__group--message">
+            <label for="message">
+                <i class="fas fa-envelope"></i>
+            </label>
+            <textarea name="" id="message"
+                      placeholder="Ihre Nachricht an uns"></textarea>
+        </div>
+        <div class="form__check-wrap">
+            <label>
+                <input type="checkbox">
+                Die <span>Datenschutzerklärung</span> habe ich gelesen und akzeptiert.
+            </label>
+        </div>
+        <button class="form__btn" type="submit">Nachricht abschicken
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </form>
+</section>
+<div id="map"></div>
+<footer class="footer">
+    <div class="contact-bar">
+        <picture>
+            <source media="(min-width: 1920px)" srcset="assets/images/logo.png">
+            <source media="(min-width: 1600px)" srcset="assets/images/logo-1600.png">
+            <source media="(min-width: 1440px)" srcset="assets/images/logo-1440.png">
+            <source media="(min-width: 1366px)" srcset="assets/images/logo-1366.png">
+            <source media="(min-width: 1024px)" srcset="assets/images/logo-1024.png">
+            <source media="(min-width: 768px)" srcset="assets/images/logo-768.png">
+            <img class="contact-bar__logo" src="assets/images/logo-768.png" alt="">
+        </picture>
+        <div class="contact-bar__info contact-bar__address">
+            <b>Optik Béla Ellinger GmbH</b>
+            <span>Praterstraße 30</span>
+            <span>1020 Wien</span>
+        </div>
+        <div class="contact-bar__info contact-bar__phone">
+            <b>Kontaktaufnahme</b>
+            <span>elefon: 01/214 12 80</span>
+            <span>E-Mail:
+                <span class="contact-bar__info--green">
+                    office@optiker-ellinger.at
+                </span>
+            </span>
+        </div>
+        <div class="contact-bar__info contact-bar__schedule">
+            <b>Öffnungszeiten</b>
+            <div class="contact-bar__schedule-box">
+                <span>Montag - Freitag:</span>
+                <span>09:00 - 18:00 Uhr</span>
+            </div>
+            <div class="contact-bar__schedule-box">
+                <span>Samstag:</span>
+                <span>09:00 - 12:00 Uhr</span>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bot">
+        <nav class="footer__menu-box">
+            <ul class="footer__menu">
+                <li class="footer__menu-link">
+                    <a href="javascript:;">
+                        Anfahrt
+                    </a>
+                </li>
+                <li class="footer__menu-link">
+                    <a href="javascript:;">
+                        Datenschutzerklärung
+                    </a>
+                </li>
+                <li class="footer__menu-link">
+                    <a href="javascript:;">
+                        Impressum
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsgv_Q4dlWcohk3a-w1P832QcyxdVgUvI&callback=initMap&libraries=&v=weekly"
+        defer
+></script>
+<script src="plugins/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+<script src="script.js"></script>
+</body>
+</html>
